@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Royal Flush — the premium poker room. Your table, your rules. Poker at your own pace.">
+<meta name="theme-color" content="#07140d">
+<title>Royal Flush — Premium Poker Room</title>
+
+<!-- ===== Meta Pixel ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1399310622039113');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1399310622039113&ev=PageView&noscript=1" alt=""/></noscript>
+<!-- ===== /Meta Pixel ===== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#07140d; --bg2:#0a1f14;
+    --felt:#0f3d28; --felt-hi:#1c5e3c;
+    --gold:#c8a04f; --gold-soft:#e8cd84; --gold-deep:#8f6f30;
+    --cream:#faf7ef; --ink:#ede8da; --muted:#93a79a; --red:#b23b3b;
+    --rail:#241708; --shadow:0 30px 80px rgba(0,0,0,.5);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Inter",system-ui,sans-serif;color:var(--ink);min-height:100vh;
+    line-height:1.6;overflow-x:hidden;position:relative;
+    background:
+      radial-gradient(1100px 620px at 82% -8%, rgba(200,160,79,.10), transparent 60%),
+      radial-gradient(900px 700px at -5% 108%, rgba(28,94,60,.22), transparent 55%),
+      linear-gradient(165deg,var(--bg),var(--bg2));
+    background-attachment:fixed;
+  }
+  /* film grain + vignette */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    box-shadow:inset 0 0 300px rgba(0,0,0,.55);}
+  main,header,footer{position:relative;z-index:2}
+
+  h1,h2,h3,.serif{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:-.01em}
+  .wrap{width:min(1140px,90%);margin-inline:auto}
+  .gilt{background:linear-gradient(135deg,var(--gold-soft) 0%,var(--gold) 45%,var(--gold-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- Buttons ---------- */
+  .btn{cursor:pointer;border:none;display:inline-flex;align-items:center;gap:10px;justify-content:center;
+    text-decoration:none;font-weight:600;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:16px 34px;border-radius:999px;transition:transform .3s var(--ease),box-shadow .3s,filter .3s;white-space:nowrap}
+  .btn-gold{position:relative;color:#20170a;
+    background:linear-gradient(135deg,var(--gold-soft),var(--gold) 55%,var(--gold-deep));
+    box-shadow:0 12px 34px rgba(200,160,79,.3),inset 0 1px 0 rgba(255,255,255,.4)}
+  .btn-gold:hover{transform:translateY(-3px);filter:brightness(1.05);box-shadow:0 18px 46px rgba(200,160,79,.42),inset 0 1px 0 rgba(255,255,255,.5)}
+  .btn-ghost{border:1px solid rgba(200,160,79,.45);color:var(--gold-soft);background:rgba(200,160,79,.04)}
+  .btn-ghost:hover{background:rgba(200,160,79,.1);border-color:var(--gold-soft)}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:linear-gradient(to bottom,rgba(7,20,13,.9),rgba(7,20,13,.35));
+    border-bottom:1px solid rgba(200,160,79,.14)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .logo{display:flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-weight:700;
+    font-size:1.2rem;letter-spacing:.04em}
+  .logo svg{width:36px;height:36px;flex:none}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;transition:color .25s}
+  .nav-links a:hover{color:var(--gold-soft)}
+  .nav .btn{padding:12px 26px}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:clamp(52px,9vw,116px) 0 clamp(60px,8vw,96px)}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,70px);align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);letter-spacing:.3em;
+    font-size:.72rem;text-transform:uppercase;margin-bottom:26px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+  h1{font-size:clamp(2.6rem,7.2vw,4.7rem);line-height:1.02;margin-bottom:24px}
+  .lede{font-size:clamp(1.08rem,2.3vw,1.4rem);color:var(--muted);max-width:32ch;margin-bottom:38px;line-height:1.55}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:40px;padding-top:26px;
+    border-top:1px solid rgba(255,255,255,.07)}
+  .trust span{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);letter-spacing:.04em}
+  .trust svg{width:16px;height:16px;color:var(--gold)}
+
+  /* ---------- Poker table ---------- */
+  .table-art{position:relative;aspect-ratio:1/1.02;display:flex;align-items:center;justify-content:center}
+  .rail{position:absolute;inset:3%;border-radius:50%/48%;background:
+      radial-gradient(circle at 50% 42%,var(--felt-hi),var(--felt) 68%);
+    border:14px solid var(--rail);
+    box-shadow:var(--shadow),inset 0 0 90px rgba(0,0,0,.6),0 0 0 2px rgba(200,160,79,.25)}
+  .rail::before{content:"";position:absolute;inset:-14px;border-radius:inherit;
+    border:2px dotted rgba(200,160,79,.3)}
+  .rail::after{content:"";position:absolute;inset:14%;border-radius:50%/48%;
+    border:1.5px dashed rgba(200,160,79,.28)}
+  .felt-logo{position:absolute;top:30%;left:50%;transform:translateX(-50%);
+    font-family:"Playfair Display",serif;font-size:clamp(.7rem,1.9vw,1rem);letter-spacing:.34em;
+    color:rgba(200,160,79,.4);text-transform:uppercase;text-align:center}
+  .fan{position:relative;z-index:3;display:flex;justify-content:center;align-items:flex-end}
+  .card{width:clamp(50px,8.4vw,74px);aspect-ratio:5/7;background:
+      linear-gradient(160deg,#fff,var(--cream));border-radius:8px;position:relative;
+    box-shadow:0 16px 30px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.06);
+    transform-origin:bottom center;transition:transform .4s var(--ease)}
+  .card+.card{margin-left:clamp(-32px,-4.4vw,-26px)}
+  .card .idx{position:absolute;font-family:"Playfair Display",serif;font-weight:700;line-height:.85;
+    display:flex;flex-direction:column;align-items:center;font-size:clamp(.8rem,1.8vw,1.05rem);color:#141414}
+  .card .idx.tl{top:6px;left:6px}
+  .card .idx.br{bottom:6px;right:6px;transform:rotate(180deg)}
+  .card .idx svg{width:.72em;height:.72em;margin-top:1px}
+  .card .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .card .center svg{width:46%;height:46%}
+  .f0{transform:rotate(-26deg) translate(14px,22px)}
+  .f1{transform:rotate(-13deg) translate(6px,6px)}
+  .f2{transform:rotate(0deg) translateY(-4px);z-index:4}
+  .f3{transform:rotate(13deg) translate(-6px,6px)}
+  .f4{transform:rotate(26deg) translate(-14px,22px)}
+  .table-art:hover .f2{transform:rotate(0) translateY(-16px)}
+  .chip{position:absolute;width:clamp(40px,6.4vw,54px);aspect-ratio:1;border-radius:50%;z-index:2;
+    box-shadow:0 10px 20px rgba(0,0,0,.45),inset 0 0 0 4px rgba(255,255,255,.22);
+    animation:float 5s var(--ease) infinite}
+  .chip::after{content:"";position:absolute;inset:18%;border-radius:50%;border:2px dashed rgba(255,255,255,.55)}
+  .chip.a{background:#b23b3b;bottom:12%;left:17%}
+  .chip.b{background:#2c5f93;bottom:18%;right:15%;animation-delay:.6s}
+  .chip.c{background:#1a4a30;bottom:6%;left:45%;animation-delay:1.2s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+  /* ---------- Features ---------- */
+  .features{padding:clamp(44px,7vw,90px) 0}
+  .sec-head{text-align:center;max-width:46ch;margin:0 auto clamp(36px,5vw,60px)}
+  .sec-head .eyebrow{justify-content:center}
+  .sec-head .eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .sec-head h2{font-size:clamp(1.9rem,4.4vw,2.9rem);margin-bottom:14px}
+  .sec-head p{color:var(--muted)}
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feature{position:relative;border-radius:20px;padding:40px 32px;overflow:hidden;
+    background:linear-gradient(172deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    border:1px solid rgba(200,160,79,.16);
+    transition:transform .35s var(--ease),border-color .35s,background .35s}
+  .feature::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .35s}
+  .feature:hover{transform:translateY(-8px);border-color:rgba(200,160,79,.4);
+    background:linear-gradient(172deg,rgba(200,160,79,.08),rgba(255,255,255,.015))}
+  .feature:hover::before{opacity:1}
+  .f-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;background:radial-gradient(circle at 35% 30%,rgba(200,160,79,.22),rgba(200,160,79,.05));
+    border:1px solid rgba(200,160,79,.3)}
+  .f-icon svg{width:28px;height:28px;color:var(--gold-soft)}
+  .feature h3{font-size:1.3rem;margin-bottom:12px}
+  .feature p{color:var(--muted);font-size:1rem}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{padding:clamp(44px,7vw,90px) 0}
+  .cta-inner{position:relative;overflow:hidden;border-radius:28px;text-align:center;
+    padding:clamp(50px,8vw,84px) clamp(22px,5vw,44px);box-shadow:var(--shadow);
+    background:radial-gradient(900px 440px at 50% -50%,rgba(200,160,79,.2),transparent 70%),
+      linear-gradient(165deg,var(--felt),#0a1d12);
+    border:1px solid rgba(200,160,79,.3)}
+  .cta-inner h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:16px}
+  .cta-inner p{color:var(--muted);margin-bottom:34px;font-size:1.08rem;max-width:40ch;margin-inline:auto}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid rgba(200,160,79,.14);padding:40px 0 30px;margin-top:20px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  .foot small{color:var(--muted);font-size:.82rem}
+  .disclaimer{color:#5f756a;font-size:.74rem;text-align:center;margin-top:22px;letter-spacing:.03em;line-height:1.7}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .lede{margin-inline:auto}.hero-cta,.trust{justify-content:center}.eyebrow{justify-content:center}
+    .table-art{order:-1;max-width:430px;width:100%;margin-inline:auto}
+    .feature-grid{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+    .nav-links{display:none}
+  }
+  @media (max-width:500px){
+    .btn{width:100%;padding:17px 24px}.hero-cta{flex-direction:column}
+    .foot{justify-content:center;text-align:center}.trust{gap:16px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Reusable suit symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spade" viewBox="0 0 32 32"><path fill="#141414" d="M16 2C11 8 4 12 4 19a7 7 0 0012.2 4.6C15.6 27 14 29 11 30h10c-3-1-4.6-3-5.2-6.4A7 7 0 0028 19c0-7-7-11-12-17z"/></symbol>
+</svg>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="40" height="40" rx="11" fill="#0f3d28" stroke="#c8a04f" stroke-width="1.6"/>
+        <path d="M24 12c-5 6-10 9-10 14a10 10 0 0020 0c0-5-5-8-10-14z" fill="#c8a04f"/>
+        <rect x="22.4" y="26" width="3.2" height="9" fill="#c8a04f"/>
+      </svg>
+      Royal&nbsp;Flush
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#formats">Formats</a>
+      <a href="#join">Join</a>
+    </div>
+    <a href="https://t.me/+79kwBGM9VX9hYzVi" target="_blank" rel="noopener" onclick="fbq('track','Lead')" class="btn btn-gold">Enter the Game</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Premium Poker Room</span>
+        <h1>Your Table.<br><span class="gilt">Your Rules.</span></h1>
+        <p class="lede">Poker at your own pace — where every hand is played entirely on your terms.</p>
+        <div class="hero-cta">
+          <a href="https://t.me/+79kwBGM9VX9hYzVi" target="_blank" rel="noopener" onclick="fbq('track','Lead')" class="btn btn-gold">Enter the Game</a>
+          <a href="#features" class="btn btn-ghost">Discover More</a>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Secure &amp; Fair Play</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>24/7 Live Tables</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l6 6L20 6"/></svg>Instant Access</span>
+        </div>
+      </div>
+
+      <div class="table-art" aria-hidden="true">
+        <div class="rail"></div>
+        <div class="felt-logo">Royal<br>Flush</div>
+        <span class="chip a"></span><span class="chip b"></span><span class="chip c"></span>
+        <div class="fan">
+          <div class="card f0"><span class="idx tl">10<svg><use href="#spade"/></svg></span><span class="center"><svg><use href="#spade"/></svg></span><span class="idx br">10<svg><use href="#spade"/></svg></span></div>
+          <div class="card f1"><span class="idx tl">J<svg><use href="#spade"/></svg></span><span class="center"><svg><use href="#spade"/></svg></span><span class="idx br">J<svg><use href="#spade"/></svg></span></div>
+          <div class="card f2"><span class="idx tl">Q<svg><use href="#spade"/></svg></span><span class="center"><svg><use href="#spade"/></svg></span><span class="idx br">Q<svg><use href="#spade"/></svg></span></div>
+          <div class="card f3"><span class="idx tl">K<svg><use href="#spade"/></svg></span><span class="center"><svg><use href="#spade"/></svg></span><span class="idx br">K<svg><use href="#spade"/></svg></span></div>
+          <div class="card f4"><span class="idx tl">A<svg><use href="#spade"/></svg></span><span class="center"><svg><use href="#spade"/></svg></span><span class="idx br">A<svg><use href="#spade"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features wrap" id="features">
+    <div class="sec-head">
+      <span class="eyebrow">Why Royal Flush</span>
+      <h2>Crafted for the Serious Player</h2>
+      <p>Every detail of the room is built around one idea — keeping you at the table and in control.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature">
+        <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Elegant Gaming Interface</h3>
+        <p>A refined, distraction-free table designed to keep your focus purely on the play.</p>
+      </article>
+      <article class="feature">
+        <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.4"/><path d="M11 18h2"/></svg></div>
+        <h3>Access From Any Device</h3>
+        <p>Move seamlessly between desktop, tablet and mobile — your seat is always ready.</p>
+      </article>
+      <article class="feature" id="formats">
+        <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l6-3 10 4-6 3zM4 7v9l10 4 6-3V11"/></svg></div>
+        <h3>A Variety of Poker Formats</h3>
+        <p>Cash games, tournaments and fast-fold — pick the rhythm that suits your style.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band wrap" id="join">
+    <div class="cta-inner">
+      <h2>Ready to Take Your Seat?</h2>
+      <p>Join the room where the game always moves at your pace. Your place at the table is waiting.</p>
+      <a href="https://t.me/+79kwBGM9VX9hYzVi" target="_blank" rel="noopener" onclick="fbq('track','Lead')" class="btn btn-gold">Enter the Game</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" style="width:30px;height:30px">
+          <rect x="4" y="4" width="40" height="40" rx="11" fill="#0f3d28" stroke="#c8a04f" stroke-width="1.6"/>
+          <path d="M24 12c-5 6-10 9-10 14a10 10 0 0020 0c0-5-5-8-10-14z" fill="#c8a04f"/>
+        </svg>
+        Royal Flush
+      </div>
+      <small>© 2026 Royal Flush. All rights reserved.</small>
+    </div>
+    <p class="disclaimer">Play responsibly. 18+ only. Gambling can be addictive — please play within your limits.</p>
+  </div>
+</footer>
+
+</body>
+</html>
